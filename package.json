@@ -18,7 +18,8 @@
     "analyze:deps:pattern": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/memento/pattern.png projects/memento/src/app/pattern/",
     "analyze:deps:feature": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/memento/feature.png projects/memento/src/app/feature/",
     "analyze:deps:layout": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/memento/layout.png projects/memento/src/app/layout/",
-    "analyze:deps:core": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/memento/core.png projects/memento/src/app/core/"
+    "analyze:deps:core": "madge  --extensions ts --ts-config tsconfig.json --image ./deps/memento/core.png projects/memento/src/app/core/",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -54,6 +55,7 @@
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-boundaries": "^4.2.0",
     "http-server": "^14.1.1",
+    "husky": "^9.0.11",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
