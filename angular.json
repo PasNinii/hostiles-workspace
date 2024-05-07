@@ -23,18 +23,14 @@
             "outputPath": "dist/memento",
             "index": "projects/memento/src/index.html",
             "browser": "projects/memento/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/memento/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/memento/src/favicon.ico",
               "projects/memento/src/assets"
             ],
-            "styles": [
-              "projects/memento/src/styles.scss"
-            ],
+            "styles": ["projects/memento/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -82,19 +78,14 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/memento/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/memento/src/favicon.ico",
               "projects/memento/src/assets"
             ],
-            "styles": [
-              "projects/memento/src/styles.scss"
-            ],
+            "styles": ["projects/memento/src/styles.scss"],
             "scripts": []
           }
         },
@@ -112,8 +103,6 @@
   },
   "cli": {
     "analytics": "9cec02e3-cdf5-49e1-826f-2df6b6a816c3",
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ]
+    "schematicCollections": ["@angular-eslint/schematics"]
   }
 }
