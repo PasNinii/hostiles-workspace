@@ -3,5 +3,117 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "memento": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": true,
+          "changeDetection": "OnPush",
+          "displayBlock": true,
+          "style": "scss"
+        }
+      },
+      "root": "projects/memento",
+      "sourceRoot": "projects/memento/src",
+      "prefix": "hostiles",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/memento",
+            "index": "projects/memento/src/index.html",
+            "browser": "projects/memento/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/memento/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/memento/src/favicon.ico",
+              "projects/memento/src/assets"
+            ],
+            "styles": [
+              "projects/memento/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "memento:build:production"
+            },
+            "development": {
+              "buildTarget": "memento:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "memento:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/memento/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/memento/src/favicon.ico",
+              "projects/memento/src/assets"
+            ],
+            "styles": [
+              "projects/memento/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/memento/**/*.ts",
+              "projects/memento/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "9cec02e3-cdf5-49e1-826f-2df6b6a816c3",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
