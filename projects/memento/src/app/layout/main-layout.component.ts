@@ -1,8 +1,19 @@
 import { TitleCasePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { filter, tap } from 'rxjs';
 
 @Component({
   selector: 'hostiles-main-layout',
@@ -17,8 +28,28 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
     RouterOutlet,
     RouterLinkActive,
     // material
-    MatToolbarModule,
     MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
   ],
 })
-export class MainLayoutComponent {}
+export class MainLayoutComponent {
+  public readonly router = inject(Router);
+  public readonly isDigestPage = signal<boolean>(false);
+
+  constructor() {
+    this.router.events
+      .pipe(
+        filter(
+          (event): event is NavigationEnd => event instanceof NavigationEnd,
+        ),
+        tap((event: NavigationEnd) =>
+          this.isDigestPage.set(event.url.includes('digest')),
+        ),
+        takeUntilDestroyed(),
+      )
+      .subscribe();
+  }
+}

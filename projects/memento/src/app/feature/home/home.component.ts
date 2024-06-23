@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'hostiles-home',
   standalone: true,
   imports: [CommonModule],
-  template: `<p>home works!</p>`,
+  template: `<p>Welcome to digest App</p>`,
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

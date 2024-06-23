@@ -1,5 +1,31 @@
-<mat-toolbar class="fixed shadow-lg !bg-white"> </mat-toolbar>
-<main class="container mx-auto mt-16 p-10">
-  <router-outlet />
+<mat-toolbar class="fixed shadow-lg">
+  <button mat-button class="logo">🔥 Memento</button>
+  <a mat-button routerLink="home">Home</a>
+  <a mat-button routerLink="digest">Digest</a>
+
+  <span class="fill-space"></span>
+</mat-toolbar>
+
+<main class="container mt-16 p-0 flex flex-1">
+  @if (isDigestPage()) {
+    <section class="px-2 pt-10 w-2/12 bg-slate-50">
+      <mat-nav-list>
+        <a mat-list-item routerLink="digest/digest-create">Create</a>
+        <a mat-list-item routerLink="digest/digest-list">List</a>
+        <a mat-list-item routerLink="digest/digest-stat">Stat</a>
+        <a mat-list-item routerLink="digest/digest-detail">Detail</a>
+      </mat-nav-list>
+    </section>
+    <section class="p-10 w-10/12">
+      <router-outlet />
+    </section>
+  } @else {
+    <section class="p-10 w-10/12">
+      <router-outlet />
+    </section>
+  }
 </main>
-<footer class="mt-auto p-10 bg-white"></footer>
+
+<footer class="mt-auto p-10 bg">
+  Currently in beta to test out some stuff
+</footer>
