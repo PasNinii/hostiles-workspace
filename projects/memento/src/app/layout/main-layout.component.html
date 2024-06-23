@@ -28,19 +28,13 @@
       } @else {
         <mat-nav-list>
           @for (route of digestChildrenRoute(); track route) {
-            <mat-list-item>
-              <mat-icon matListItemIcon>{{ route.icon }}</mat-icon>
-              <span matListItemTitle>{{ route.title }}</span>
-            </mat-list-item>
-            <!-- <a
-              class="mt-10"
-              mat-list-item
+            <mat-list-item
               [routerLink]="'digest/' + route.path"
               routerLinkActive="is-active"
             >
-              {{ route.title }}
-              <mat-icon>{{ route.icon }}</mat-icon>
-            </a> -->
+              <mat-icon matListItemIcon>{{ route.icon }}</mat-icon>
+              <span matListItemTitle>{{ route.title }}</span>
+            </mat-list-item>
           }
         </mat-nav-list>
       }
