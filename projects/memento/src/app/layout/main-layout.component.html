@@ -11,9 +11,9 @@
 
 <main class="container mt-16 p-0 flex flex-1">
   @if (isDigestPage()) {
-    <section class="px-2 pt-10 w-2/12 bg-slate-50">
-      @if (layout() === 'XSmall') {
-        <div class="flex flex-col items-center">
+    <section class="px-2 pt-10 w-1/12 bg-slate-50">
+      @if (['XSmall', 'Small', 'Medium'].includes(layout() ?? '')) {
+        <div class="flex flex-col items-center mt-10">
           @for (route of digestChildrenRoute(); track route) {
             <a
               class="mt-2"
@@ -28,22 +28,28 @@
       } @else {
         <mat-nav-list>
           @for (route of digestChildrenRoute(); track route) {
-            <a
+            <mat-list-item>
+              <mat-icon matListItemIcon>{{ route.icon }}</mat-icon>
+              <span matListItemTitle>{{ route.title }}</span>
+            </mat-list-item>
+            <!-- <a
+              class="mt-10"
               mat-list-item
               [routerLink]="'digest/' + route.path"
               routerLinkActive="is-active"
             >
               {{ route.title }}
-            </a>
+              <mat-icon>{{ route.icon }}</mat-icon>
+            </a> -->
           }
         </mat-nav-list>
       }
     </section>
-    <section class="p-10 w-10/12">
+    <section class="p-10 w-11/12">
       <router-outlet />
     </section>
   } @else {
-    <section class="p-10 w-10/12">
+    <section class="p-10 w-12/12">
       <router-outlet />
     </section>
   }

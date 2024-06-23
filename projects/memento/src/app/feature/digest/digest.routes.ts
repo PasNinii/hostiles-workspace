@@ -16,7 +16,7 @@ export default <ExtendedRoute[]>[
       },
       {
         path: 'digest-create',
-        title: 'Create',
+        title: 'Add',
         icon: 'add',
         loadChildren: () => import('./digest-create/digest-create.routes'),
       },
@@ -28,7 +28,7 @@ export default <ExtendedRoute[]>[
       },
       {
         path: 'digest-detail',
-        title: 'Detail',
+        title: 'Dig',
         icon: 'summarize',
         loadChildren: () => import('./digest-detail/digest-detail.routes'),
       },

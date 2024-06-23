@@ -18,7 +18,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter, tap } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
+// eslint-disable-next-line boundaries/element-types
 import digestRoutes, { ExtendedRoute } from '../feature/digest/digest.routes';
+// eslint-disable-next-line boundaries/element-types
 import { routes } from '../app.routes';
 
 @Component({
