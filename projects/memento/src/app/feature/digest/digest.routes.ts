@@ -1,25 +1,35 @@
-import { Routes } from '@angular/router';
+import { Route } from '@angular/router';
 import { DigestComponent } from './digest.components';
 
-export default <Routes>[
+export type ExtendedRoute = Route & { icon?: string };
+
+export default <ExtendedRoute[]>[
   {
-    path: 'digest',
+    path: '',
     component: DigestComponent,
-    children: [
+    children: <ExtendedRoute>[
       {
         path: 'digest-list',
+        title: 'List',
+        icon: 'table_rows',
         loadChildren: () => import('./digest-list/digest-list.routes'),
       },
       {
         path: 'digest-create',
+        title: 'Create',
+        icon: 'add',
         loadChildren: () => import('./digest-create/digest-create.routes'),
       },
       {
         path: 'digest-stat',
+        title: 'Stat',
+        icon: 'stacked_bar_chart',
         loadChildren: () => import('./digest-stat/digest-stat.routes'),
       },
       {
         path: 'digest-detail',
+        title: 'Detail',
+        icon: 'summarize',
         loadChildren: () => import('./digest-detail/digest-detail.routes'),
       },
     ],
