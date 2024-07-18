@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'hostiles-home',
   standalone: true,
   imports: [],
-  template: ``,
+  template: `<p>Welcome home</p>`,
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
